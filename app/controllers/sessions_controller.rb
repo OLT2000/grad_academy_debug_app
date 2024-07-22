@@ -28,6 +28,7 @@ class SessionsController < ApplicationController
   # Redirects to the login page with a signed out notice
   def destroy
     logout
+    # redirect_to welcome_path(locale: I18n.locale), notice: I18n.t('sessions.signed_out')
   end
 
   private

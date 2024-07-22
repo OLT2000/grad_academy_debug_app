@@ -14,7 +14,6 @@ module QuizResultsHelper
   def scoring_metrics(quiz_results)
     correct_answers = total_correct_answers(quiz_results)
     score_percentage = score_percentage(quiz_results) || 0
-    puts "Correct Answer: #{correct_answers}\nPct: #{score_percentage}\n"
     [score_percentage, correct_answers, TOTAL_QUESTIONS]
   end
 
