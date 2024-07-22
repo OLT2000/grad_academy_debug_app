@@ -29,11 +29,13 @@ module QuizResultsHelper
   def total_correct_answers(quiz_results)
     total_correct = 0
     quiz_results.answer.each_with_index do |answers, page_index|
-      puts "Page Index: #{page_index}\nAnswers: #{answers}"
+      # puts "Page Index: #{page_index}\nAnswers: #{answers}"
       answers[1].each_with_index do |answer, question_index|
         correct_answer = fetch_correct_answer(page_index, question_index)
-        puts "PIDX: #{page_index}\nQIDX: #{question_index}\nAns: #{answer}\nCorrect: #{correct_answer}"
-        total_correct += 1 if evaluate_result(correct_answer, answer)
+        # puts "PIDX: #{page_index}\nQIDX: #{question_index}\nAns: #{answer}\nCorrect: #{correct_answer}"
+        if evaluate_result(correct_answer, answer) == "Correct"
+          total_correct += 1
+        end
       end
     end
     total_correct
@@ -50,7 +52,7 @@ module QuizResultsHelper
   def score_percentage(quiz_results)
     return 0 if TOTAL_QUESTIONS.zero?
 
-    (total_correct_answers(quiz_results).to_f / TOTAL_QUESTIONS * 100)
+    (total_correct_answers(quiz_results).to_f / TOTAL_QUESTIONS * 100).round 2
   end
 
   # Checks if a user's answer matches the correct answer.
