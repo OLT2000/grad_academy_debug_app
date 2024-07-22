@@ -14,6 +14,7 @@ module QuizResultsHelper
   def scoring_metrics(quiz_results)
     correct_answers = total_correct_answers(quiz_results)
     score_percentage = score_percentage(quiz_results) || 0
+    puts "Correct Answer: #{correct_answers}\nPct: #{score_percentage}\n"
     [score_percentage, correct_answers, TOTAL_QUESTIONS]
   end
 
@@ -28,9 +29,11 @@ module QuizResultsHelper
   def total_correct_answers(quiz_results)
     total_correct = 0
     quiz_results.answer.each_with_index do |answers, page_index|
+      puts "Page Index: #{page_index}\nAnswers: #{answers}"
       answers[1].each_with_index do |answer, question_index|
         correct_answer = fetch_correct_answer(page_index, question_index)
-        total_correct += 1 if check_answer(correct_answer, answer)
+        puts "PIDX: #{page_index}\nQIDX: #{question_index}\nAns: #{answer}\nCorrect: #{correct_answer}"
+        total_correct += 1 if evaluate_result(correct_answer, answer)
       end
     end
     total_correct
@@ -81,7 +84,6 @@ module QuizResultsHelper
     user_answer = fetch_user_answer(answers, question_index)
     result = evaluate_result(correct_answer, user_answer)
 
-    puts "\nPage IDX: #{page_index}\nQIDX: #{question_index}\nQ: #{question_index}\nAns: #{user_answer}\nCorrect: #{correct_answer}\nResult: #{result}"
     content_tag(:tr) do
       generate_table_data(question, correct_answer, user_answer, result)
     end

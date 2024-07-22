@@ -61,6 +61,7 @@ class StepsController < ApplicationController
   # GET /results
   # Displays the user's quiz results.
   def results
+    puts "HERE"
     clean_and_complete_quiz
     @quiz_results = current_user.answers.last
     @questions_per_page = QUESTIONS_PER_PAGE
