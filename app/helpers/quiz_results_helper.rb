@@ -81,6 +81,7 @@ module QuizResultsHelper
     user_answer = fetch_user_answer(answers, question_index)
     result = evaluate_result(correct_answer, user_answer)
 
+    puts "\nPage IDX: #{page_index}\nQIDX: #{question_index}\nQ: #{question_index}\nAns: #{user_answer}\nCorrect: #{correct_answer}\nResult: #{result}"
     content_tag(:tr) do
       generate_table_data(question, correct_answer, user_answer, result)
     end
@@ -139,7 +140,11 @@ module QuizResultsHelper
   # - String indicating whether the user's answer was "Correct" or "Incorrect".
   #
   def evaluate_result(correct_answer, user_answer)
-    'Incorrect'
+    if correct_answer.downcase == user_answer.downcase
+      "Correct"
+    else
+      "Incorrect"
+    end
   end
 
   # Generates table data (`<td>`) for question, correct answer, user's answer, and result.
