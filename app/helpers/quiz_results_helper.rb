@@ -14,6 +14,7 @@ module QuizResultsHelper
   def scoring_metrics(quiz_results)
     correct_answers = total_correct_answers(quiz_results)
     score_percentage = score_percentage(quiz_results) || 0
+    puts "Correct Answer: #{correct_answers}\nPct: #{score_percentage}\n"
     [score_percentage, correct_answers, TOTAL_QUESTIONS]
   end
 
@@ -28,9 +29,13 @@ module QuizResultsHelper
   def total_correct_answers(quiz_results)
     total_correct = 0
     quiz_results.answer.each_with_index do |answers, page_index|
+      # puts "Page Index: #{page_index}\nAnswers: #{answers}"
       answers[1].each_with_index do |answer, question_index|
         correct_answer = fetch_correct_answer(page_index, question_index)
-        total_correct += 1 if check_answer(correct_answer, answer)
+        # puts "PIDX: #{page_index}\nQIDX: #{question_index}\nAns: #{answer}\nCorrect: #{correct_answer}"
+        if evaluate_result(correct_answer, answer) == "Correct"
+          total_correct += 1
+        end
       end
     end
     total_correct
@@ -47,7 +52,7 @@ module QuizResultsHelper
   def score_percentage(quiz_results)
     return 0 if TOTAL_QUESTIONS.zero?
 
-    (total_correct_answers(quiz_results).to_f / TOTAL_QUESTIONS * 100)
+    (total_correct_answers(quiz_results).to_f / TOTAL_QUESTIONS * 100).round 2
   end
 
   # Checks if a user's answer matches the correct answer.
@@ -139,7 +144,11 @@ module QuizResultsHelper
   # - String indicating whether the user's answer was "Correct" or "Incorrect".
   #
   def evaluate_result(correct_answer, user_answer)
-    'Incorrect'
+    if correct_answer.downcase == user_answer.downcase
+      "Correct"
+    else
+      "Incorrect"
+    end
   end
 
   # Generates table data (`<td>`) for question, correct answer, user's answer, and result.
