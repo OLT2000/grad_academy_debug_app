@@ -39,6 +39,8 @@ module Authentication
 
   # Retrieves the currently logged-in user based on session.
   def current_user
+    p session[:current_user_id]
+    p User.find_by(id: session[:current_user_id])
     @current_user ||= session[:current_user_id] && User.find_by(id: session[:current_user_id])
   end
 
