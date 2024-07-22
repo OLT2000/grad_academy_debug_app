@@ -18,7 +18,7 @@
           <%= link_to t('forms.sign_out'), '#', class: 'text-white m-0 fw-normal', data: { bs_toggle: 'modal', bs_target: '#signoutModal' } %>
         </h5>
         <div class="ms-3">
-          <img alt="English" class="rounded-circle" style="width:24px" src="/assets/en-dd5886d2fe8221b32c59aec4ea0d35e99ca4106e948d8eeb415248d988a07954.png">
+          <%= render partial: "shared/flag"%>
         </div>
       </div>
     <% end %>
