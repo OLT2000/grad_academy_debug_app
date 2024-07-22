@@ -14,7 +14,13 @@ module ApplicationHelper
     if page_title.empty?
       base_title
     else
-      base_title + " - " + page_title
+      base_title + ' - ' + page_title
+    end
+  end
+
+  def sign_up_img
+    content_tag('div') do
+      image_tag('sign-up-welcome.svg')
     end
   end
 
