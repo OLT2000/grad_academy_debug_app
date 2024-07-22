@@ -1,8 +1,10 @@
 <div id="welcome" class="container w-75 mt-5 mb-4 pt-5">
   <h1 class="text-danger">
-    <%= t('welcome.instructions.title', username: 'current_user.username').try(:html_safe) %>
+    <%= t('welcome.instructions.title', username: current_user.username).try(:html_safe) %>
   </h1>
-  <hr class="solid">
+  <hr class="border-top border-3 border-danger my-2">
+  </br>
+  </br>
   <div class="lead">
     <%= t('welcome.instructions.subtitle').try(:html_safe) %>
   </div>
