@@ -19,7 +19,8 @@ Same as footer?
 `app/views/layouts/application.html.erb 25:` Removed the footer render from the application base template.
 
 ### Missing or incorrect HTML
-`app/view/locales/en.yml 34:` Removed html from translations file. Replaced with %{username}.
+`app/view/locales/en.yml 34:` Removed html from translations file. 
+Replaced with %{username}.
 `app/views/home/_welcome.html.erb 3:7` Removed surrounding speech marks from the function args. Also added breakpoints.
 
 ### Missing Horizontal Rule
