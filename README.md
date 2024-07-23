@@ -29,16 +29,20 @@ Same as footer?
 `app/assets/stylesheets/components/_navbar.scss 12:` Changed logo width to 1.65rem.
 
 ### Incorrect Styling of Sign In Page
+`app/views/home/_welcome.html.erb 16:17` Added list items
 
-### Image not showing up on sign ip page
+### Image not showing up on sign up page
 
 ### Inacessible 'text light'
 
 
+
 ## Question 3
 ### Missing styling for buttons on the sign in, sign up and welcome pages
+`app/views/home/_welcome.html.erb 26:` Changed "btn btn-danger"
 
 ### Incorrect Page Title
+`app/helpers/application_helper.rb 15:` Changed return to base_title and base_title + "-" + page_title
 
 
 ## Question 4
@@ -53,6 +57,7 @@ Same as footer?
 ### Next Button Not Working
 
 ### Start Button not starting quiz
+`app/views/home/_welcome.html.erb 26:` Changed link_to content to "Start Quiz" and step_path(id: 1)
 
 ### Incorrect Text on welcome page
 
