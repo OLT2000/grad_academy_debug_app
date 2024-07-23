@@ -143,7 +143,7 @@ module QuizResultsHelper
   # - String indicating whether the user's answer was "Correct" or "Incorrect".
   #
   def evaluate_result(correct_answer, user_answer)
-    if correct_answer.downcase == user_answer.downcase
+    if correct_answer.downcase.strip == user_answer.downcase.strip
       "Correct"
     else
       "Incorrect"
