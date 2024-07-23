@@ -5,11 +5,11 @@
 
   <table class="table mt-4">
     <tr>
-      <th><%= t('scoreboard.table.quiz') %></th>
-      <th style="width: 30%"><%= t('scoreboard.table.user') %></th>
-      <th><%= t('scoreboard.table.date') %></th>
-      <th><%= t('scoreboard.table.score') %></th>
-      <th><%= t('scoreboard.table.download_results') %></th>
+      <th style="width: 17%"><%= t('scoreboard.table.quiz') %></th>
+      <th style="width: 25%"><%= t('scoreboard.table.user') %></th>
+      <th style="width: 27%"><%= t('scoreboard.table.date') %></th>
+      <th style="width: 8%"><%= t('scoreboard.table.score') %></th>
+      <th style="width: 23%"><%= t('scoreboard.table.download_results') %></th>
     </tr>
     <tbody class="table-group-divider border-danger">
       <% @top_scores.each_with_index do |answer, _index| %>
