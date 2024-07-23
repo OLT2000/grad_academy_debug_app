@@ -5,11 +5,9 @@ Strategy:
 - Identified typos and then used the search bar to locate the exact typo in the directory
 
 ### Sign Up Page
-In 
-
+`app/views/users/new.html.erb 14:` Changed "form.label :usernam" to "form.label :username"
 ### Welcome Page
 `config/locales/en.yml 34:35` Changed 'Read' to 'Ready' and 'Welcom' to 'Welcome'.
-
 ### 404
 `config/locales/en.yml 2:` Changed 'pag' to 'page' and 'fore' to 'fore'.
 
@@ -17,11 +15,11 @@ In
 ## Question 2
 ### Additional Horizontal Rule
 Same as footer?
-
 ### Additional Footer
 `app/views/layouts/application.html.erb 25:` Removed the footer render from the application base template.
 
 ### Missing or incorrect HTML
+`app/view/locales/en.yml 34:` Removed html from translations file. Replaced with %{username}.
 `app/views/home/_welcome.html.erb 3:7` Removed surrounding speech marks from the function args. Also added breakpoints.
 
 ### Missing Horizontal Rule
@@ -34,9 +32,11 @@ Same as footer?
 `app/views/home/_welcome.html.erb 16:17` Added list items
 
 ### Image not showing up on sign up page
+`app/helpers/application_helper.rb 21:` Added code to render the sign up image 
+`app/views/users/new.html.erb 7:` call method to display image on the page
 
 ### Inacessible 'text light'
-
+`app/views/users/new.html.erb` in this file changed the bootstrap code to "text-dark" 
 
 
 ## Question 3
@@ -49,7 +49,7 @@ Same as footer?
 
 ## Question 4
 ### Missing Table Header in Check Your Answers
-
+`app/views/steps/check_your_answers.html.erb` Added missing headers in the file
 
 ### Percentage Score Calcluation Rounding Error
 `app/helpers/quiz_results_helper.rb 55` added .round 2
@@ -84,10 +84,10 @@ Same as footer?
 
 ## Question 5
 ###  Results Page Table
-
+`app/views/steps/results.html.erb` Fixed errors to display results correctly
 
 ### Fix Download
-
+`app/helpers/scoreboard_helper.rb 21:` Changed the encoding to UTF-8 
 
 ## Question 6
 ### Calculation Wrong
