@@ -12,7 +12,11 @@ Rails.application.routes.draw do
     post 'login', to: 'sessions#create'
     delete 'logout', to: 'sessions#destroy'
 
-    resource :user, only: %i[edit update]
+    resource :user, only: %i[edit update] do
+      collection do
+        get "view", to: "users#view"
+      end
+    end
 
     # Steps controller routes
     resources :steps, only: %i[show update edit] do

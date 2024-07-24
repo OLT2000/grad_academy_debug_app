@@ -26,4 +26,28 @@ class User < ApplicationRecord
 
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
   validates :username, presence: true
+  after_initialize :set_defaults, if: :new_record?
+
+  def set_defaults
+    self.experience ||= 0
+    self.level ||= 1
+  end
+
+  # Method to add experience points
+  def add_experience(points)
+    self.experience += points
+    level_up while experience >= required_experience(self.level)
+    save
+  end
+
+  # Method to handle leveling up
+  def level_up
+    self.level += 1
+    self.experience -= required_experience(self.level - 1)
+  end
+
+  # Calculate the experience required to level up
+  def required_experience(current_level)
+    current_level * 10 # or some other formula to make leveling up progressively harder
+  end
 end

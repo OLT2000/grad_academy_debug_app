@@ -3,11 +3,13 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: %i[edit update]
   before_action :redirect_if_authenticated, only: %i[create new]
 
+
   # GET /users/new
   # Displays the user registration form.
   def new
     @user = User.new
   end
+
 
   # GET /users/edit
   # Displays the user profile edit form.

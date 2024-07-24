@@ -4,6 +4,8 @@
   <h2 class="text-danger"><%= t('forms.edit_profile') %></h2>
   <hr class="border-top border-3 border-danger my-2">
   <br/>
+  
+  <br/>
   <%= form_with(model: current_user, url: user_path, local: true, method: :patch) do |form| %>
     <%= render partial: "shared/form_errors", locals: { object: form.object } %>
 

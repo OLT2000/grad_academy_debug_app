@@ -61,12 +61,12 @@ class StepsController < ApplicationController
   # GET /results
   # Displays the user's quiz results.
   def results
-    puts "HERE"
     clean_and_complete_quiz
     @quiz_results = current_user.answers.last
     @questions_per_page = QUESTIONS_PER_PAGE
     @score_percentage, @correct_answers, @total_questions = scoring_metrics(@quiz_results)
     @quiz_results.update(score: @score_percentage)
+    current_user.add_experience(@correct_answers)
 
     clear_quiz_form_session_data # <- Clear the quiz form session data
 

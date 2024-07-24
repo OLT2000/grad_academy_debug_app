@@ -195,3 +195,5 @@ en:
     buttons:
       start_new_quiz: "Start New Quiz"
       download_all_results: "Download all results"
+    profile:
+      title: "Welcome To Your Profile, %{username}"
