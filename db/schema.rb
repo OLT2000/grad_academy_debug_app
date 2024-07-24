@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_23_151219) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_24_085742) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "achievements", force: :cascade do |t|
+    t.string "achievement_title", null: false
+    t.text "achievement_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["achievement_title"], name: "index_achievements_on_achievement_title", unique: true
+  end
 
   create_table "answers", force: :cascade do |t|
     t.bigint "user_id"
@@ -27,6 +35,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_23_151219) do
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
+  create_table "user_achievements", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "achievement_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["achievement_id"], name: "index_user_achievements_on_achievement_id"
+    t.index ["user_id"], name: "index_user_achievements_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.text "password_digest"
@@ -34,10 +51,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_23_151219) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "language", default: "en"
-    t.integer "experience"
-    t.integer "level"
+    t.integer "experience", default: 0
+    t.integer "level", default: 1
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "answers", "users"
+  add_foreign_key "user_achievements", "achievements"
+  add_foreign_key "user_achievements", "users"
 end

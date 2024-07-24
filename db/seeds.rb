@@ -1,6 +1,30 @@
 # Include QuizResultsHelper to access helper methods
 include QuizResultsHelper
 
+achievements_data = [
+  { achievement_title: "No Room For Error", achievement_description: "Achieve 100% On a Quiz"},
+  { achievement_title: "Noob Achievement", achievement_description: "Complete Your First Quiz"}
+]
+
+achievements_data.each do |ach_data|
+  Achievement.find_or_create_by(achievement_title: ach_data[:achievement_title]) do |new_ach|
+      new_ach.achievement_title = ach_data[:achievement_title]
+      new_ach.achievement_description = ach_data[:achievement_description]
+    end
+  end
+
+
+  test_achievement = [
+    {user_id: 1, achievement_id: 1}
+  ]
+  test_achievement.each do |test_ach|
+    UserAchievement.find_or_create_by(user_id: test_ach[:user_id], achievement_id: test_ach[:achievement_id]) do |new_ach|
+      new_ach.user_id = test_ach[:user_id]
+      new_ach.achievement_id = test_ach[:achievement_id]
+    end
+  end
+
+
 # Define sample users (assuming User model exists)
 users_data = [
   { email: 'test@test.com', username: 'test', password: 'test' },

@@ -26,11 +26,65 @@
   display: none;
 }
 
-.toplogo {
-  margin-top: 5px;
+.card {
+  padding: 1rem;
+  border: 1px solid #1922a0;
+  border-radius: 0.5rem;
+  background-color: #ffffff00;
+  max-width: 300px; /* Optional: Set a max-width to control card size */
+  // max-height: 100px;
 }
 
-.toplogo img {
-  height : 30%;
-  width : 30%;
+.progress-bar-dark-red {
+  background-color: rgb(97, 1, 1);
+}
+
+.progress-bar-red {
+  background-color: rgb(255, 0, 0);
+}
+
+.progress-bar-orange {
+  background-color: rgb(223, 76, 12);
+}
+
+.progress-bar-yellow {
+  background-color: rgb(255, 234, 0);
+}
+
+.progress-bar-green {
+  background-color: rgb(51, 184, 24);
+}
+
+
+/* Optional: Styles for the progress container */
+.progress {
+  width: 100%;
+  background-color: #f3f3f3; /* Light gray background for the progress bar container */
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 20px; /* Adjust height as needed */
+  line-height: 20px; /* Center text vertically */
+  color: white; /* Text color */
+  text-align: center; /* Center text horizontally */
+  border-radius: 4px;
+  transition: width 0.3s ease; /* Smooth width transition */
+}
+
+.achievement-title {
+  font-size: 1.25rem; /* Adjust size as needed */
+  font-weight: bold;
+  margin-bottom: 0.5rem; /* Space between title and description */
+  margin-left: 0.5rem;
+  line-height: 1.2; /* Adjust line height for better spacing */
+}
+
+.achievement-description {
+  font-size: 0.875rem; /* Smaller font size */
+  color: #666; /* Optional: Adjust color for better readability */
+  margin-bottom: 0; /* Remove bottom margin if needed */
+  margin-left: 0.5rem;
+  line-height: 1.4; /* Adjust line height for readability */
 }

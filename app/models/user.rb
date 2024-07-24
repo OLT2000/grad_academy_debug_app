@@ -23,9 +23,12 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :answers, dependent: :destroy
+  has_many :user_achievements, dependent: :destroy
+  has_many :achievements, through: :user_achievements
 
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
   validates :username, presence: true
+  
   after_initialize :set_defaults, if: :new_record?
 
   def set_defaults

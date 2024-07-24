@@ -11,6 +11,18 @@ class UsersController < ApplicationController
   end
 
 
+  def view
+    @achievements = current_user.achievements
+  end
+
+
+   # POST /users/1/add_achievement
+   def add_achievement
+    result = AchievementService.add_achievement_to_user(@user, params[:achievement_id])
+    redirect_to @user, notice: result[:message]
+  end
+
+
   # GET /users/edit
   # Displays the user profile edit form.
   def edit
