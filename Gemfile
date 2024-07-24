@@ -20,6 +20,8 @@ gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
+gem 'chartkick'
+gem 'groupdate'  # This is often used with Chartkick for grouping data by time
 
 group :development, :test do
   gem 'capybara'

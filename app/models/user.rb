@@ -36,6 +36,10 @@ class User < ApplicationRecord
     self.level ||= 1
   end
 
+  def add_achievement(achievement_id)
+    UserAchievement.find_or_create_by(user_id: self.id, achievement_id: achievement_id)
+  end
+
   # Method to add experience points
   def add_experience(points)
     self.experience += points

@@ -43,6 +43,7 @@ class StepsController < ApplicationController
       # Save current state in session
       session[:quiz_forms] ||= []
       session[:quiz_forms][@quiz_form.current_step - 1] = @quiz_form.attributes
+      # session[:quiz_forms][:timer_value] = @quiz_form
 
       next_step
     else
@@ -66,7 +67,14 @@ class StepsController < ApplicationController
     @questions_per_page = QUESTIONS_PER_PAGE
     @score_percentage, @correct_answers, @total_questions = scoring_metrics(@quiz_results)
     @quiz_results.update(score: @score_percentage)
+    current_user.add_achievement(2)
     current_user.add_experience(@correct_answers)
+
+    if @score_percentage == 100.0
+      current_user.add_achievement(1)
+    end
+
+
 
     clear_quiz_form_session_data # <- Clear the quiz form session data
 
@@ -97,6 +105,7 @@ class StepsController < ApplicationController
 
   # Sets the quiz form based on parameters or defaults.
   def set_quiz_form
+    puts params[:quiz_form]
     @quiz_form = if params[:quiz_form].present?
                    build_quiz_form_from_params(quiz_form_params)
                  elsif params[:encoded_params].present?

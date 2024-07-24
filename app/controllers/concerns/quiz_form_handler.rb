@@ -23,6 +23,8 @@ module QuizFormHandler
   # Builds a new quiz form instance with answers based on the provided params.
   def build_quiz_form_with_answers
     @quiz_form = QuizForm.new(current_step: params[:id].to_i, current_user_id: current_user.id)
+    puts @quiz_form
+    puts params
     populate_quiz_form_with_answers
   end
 

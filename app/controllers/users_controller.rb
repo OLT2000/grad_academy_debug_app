@@ -13,6 +13,12 @@ class UsersController < ApplicationController
 
   def view
     @achievements = current_user.achievements
+    answers = Answer.where(user_id: current_user.id)
+    @data = answers.map.with_index(1) do |answer, index|
+      [index, answer.score]
+    end.to_h
+    puts @data
+
   end
 
 

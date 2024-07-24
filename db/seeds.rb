@@ -50,14 +50,39 @@ end
 # Define example answers for each user
 answers_data = {
   'test' => {
-    question_page_1: ['Tibia', 'Isaac Newton', 'Intel', 'Mount Everest', 'Nitrogen'],
+    question_page_1: ['Tibia', 'Isaac Newton', 'Microsoft', 'Mount Fuji', 'Oxygen'],
     question_page_2: ['Photosynthesis', 'Ornithology', 'Dorothy Hodgkin', 'Ruby', 'F. Scott Fitzgerald'],
     question_page_3: %w[giraffe pacific lima au ruby]
   },
-  'alice' => {
+  'test' => {
+    question_page_1: ['Femur', 'Isaac Newton', 'Intel', 'Mount Everest', 'Oxygen'],
+    question_page_2: ['Photosynthesis', 'Entonology', 'Dorothy Hodgkin', 'Python', 'F. Scott Fitzgerald'],
+    question_page_3: %w[giraffe nope lima pb wrong]
+  },
+  'test' => {
     question_page_1: ['Tibia', 'Isaac Newton', 'Intel', 'Mount Everest', 'Nitrogen'],
+    question_page_2: ['Photosynthesis', 'Ornithology', 'Dorothy Hodgkin', 'Ruby', 'F. Scott Fitzgerald'],
+    question_page_3: %w[n pacific lima au ruby]
+  },
+  'test' => {
+    question_page_1: ['Tibia', 'Isaac Newton', 'Intel', 'Mount Everest', 'Nitrogen'],
+    question_page_2: ['Photosynthesis', 'Ornithology', 'Dorothy Hodgkin', 'Ruby', 'F. Scott Fitzgerald'],
+    question_page_3: %w[giraffe o lima au ruby]
+  },
+  'test' => {
+    question_page_1: ['Tibia', 'Isaac Newton', 'Intel', 'Mount Everest', 'Nitrogen'],
+    question_page_2: ['Photosynthesis', 'Ornithology', 'Dorothy Hodgkin', 'Ruby', 'F. Scott Fitzgerald'],
+    question_page_3: %w[giraffe pacific p au ruby]
+  },
+  'test' => {
+    question_page_1: ['Tibia', 'Isaac Newton', 'Intel', 'Mount Everest', 'Nitrogen'],
+    question_page_2: ['Photosynthesis', 'Ornithology', 'Dorothy Hodgkin', 'Ruby', 'F. Scott Fitzgerald'],
+    question_page_3: %w[giraffe pacific lima e ruby]
+  },
+  'alice' => {
+    question_page_1: ['Femu', 'Isaac Newton', 'Intel', 'Mount Everest', 'Nitrogen'],
     question_page_2: ['Photosynthesis', 'Entomology', 'Dorothy Hodgkin', 'Python', 'J.D. Salinger'],
-    question_page_3: %w[giraffe pacific lima au ruby]
+    question_page_3: %w[no pacific lima au lol]
   },
   'bob' => {
     question_page_1: ['Femur', 'Albert Einstein', 'Intel', 'Mount Everest', 'Nitrogen'],
@@ -76,10 +101,6 @@ answers_data.each do |username, answers|
   user = User.find_by(username: username)
 
   if user
-    if user.answers.exists?
-      puts "Answers for user #{user.username} already exist."
-    else
-      # Create an instance of Answer
       answer = Answer.create!(
         user: user,
         answer: answers,
@@ -95,7 +116,7 @@ answers_data.each do |username, answers|
       answer.update(score: score_percentage)
 
       puts "Created answers for user: #{user.username}, Score: #{score_percentage}%"
-    end
+
   else
     puts "User #{username} not found."
   end
